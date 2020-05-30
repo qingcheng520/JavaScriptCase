@@ -51,6 +51,7 @@
             width: 400px;
             height: 350px;
             overflow: auto;
+			background-color: ;
         }
     </style>
 </head>
