@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        div {
+            width: 250px;
+            margin: 100px auto;
+        }
+		ul > li{
+			display: block;
+			width: 200px;
+			list-style: none;	
+		}
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text">
+        <button type="button">提交</button>
+        <ul>
+            <!-- <li></li> -->
+        </ul>
+    </div>
+    <script>
+        var but = document.querySelector('input')
+        var tet = document.querySelector('button')
+		var u = document.querySelector('ul')
+        tet.onclick = function() {
+            // console.log(but.value)
+			u.innerHTML = u.innerHTML + '<li>'+ but.value +'</li>'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        div {
+            width: 100px;
+            height: 40px;
+            margin: 100px auto;
+            text-align: center;
+            line-height: 40px;
+            background-color: aqua;
+        }
+        
+        div:hover {
+            cursor: pointer;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .blue {
+            background-color: blue;
+        }
+        
+        .orange {
+            background-color: orange;
+        }
+        
+        .browm {
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="apua">点我试试</div>
+    <script>
+        var Odiv = document.getElementsByTagName('div')
+        var oBtn = ['red', 'blue', 'orange', 'browm']
+        var i = 0
+        Odiv[0].onclick = function() {
+            i++
+            Odiv[0].className = oBtn[i % 4]
+        }
+    </script>
+</body>
+
+</html>
++

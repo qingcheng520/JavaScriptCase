@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        
+        #carousel {
+            width: 750px;
+            height: 300px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        
+        #carousel>div {
+            width: 750px;
+            height: 300px;
+            position: absolute;
+            overflow: hidden;
+        }
+        
+        #carounsel>ul {
+            height: 300px;
+            transform: translate(0px);
+        }
+        
+        #carounsel>ul>li {
+            float: left;
+            /* display: inline-block; */
+        }
+        
+        li {
+            display: block;
+        }
+        
+        #carounsel>ul>li>img {
+            width: 750px;
+            height: 300px;
+        }
+        
+        #buttons {
+            position: relative;
+            height: 20px;
+            top: -25px;
+            /* right: -340px; */
+        }
+        
+        #buttons>ul>li {
+            float: left;
+        }
+        
+        #buttons>ul>li>button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="carousel">
+        <div>
+            <div id="carounsel">
+            </div>
+            <div id="buttons">
+            </div>
+        </div>
+    </div>
+    <script>
+        var carounsel = document.getElementById('carounsel'),
+            picture = ["./images/01.png", "./images/02.png", "./images/03.png", "./images/02.png", "./images/01.png", "./images/03.png"],
+            ul = document.createElement('ul'),
+            length = picture.length,
+            i = 0
+        carounsel.append(ul)
+        carounsel.style.width = (750 * length + "px")
+
+        function add() {
+            for (; i < length; i++) {
+                li = document.createElement('li')
+                img = document.createElement("img")
+                img.setAttribute('src', picture[i])
+                li.append(img)
+                ul.append(li)
+            }
+        }
+        add()
+        var buttons = document.getElementById('buttons'),
+            ul = document.createElement('ul'),
+            j = 0
+        buttons.append(ul)
+
+        function abc() {
+            for (; j < length; j++) {
+                li = document.createElement('li')
+                button = document.createElement('button')
+                button.append('0' + (j + 1))
+                li.append(button)
+                ul.append(li)
+            }
+        }
+        abc()
+
+        buttons.style.width = (24 * length + "px")
+        buttons.style.right = (-((750 - 24 * length) / 2) + 'px')
+        buttons_list = document.querySelectorAll('#buttons>ul>li')
+        carounsel_list = document.querySelectorAll('#carounsel>ul')
+        var but_lengtt = buttons_list.length
+        for (var a = 0; a < but_lengtt; a++) {
+            function acc(b) {
+                buttons_list[b].onclick = function() {
+                    carounsel_list[0].style.transform = "translate(" + b * -750 + "px)"
+                }
+            }
+            acc(a)
+        }
+    </script>
+</body>
+
+</html>

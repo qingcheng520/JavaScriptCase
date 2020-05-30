@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+	<style>
+		*{
+			padding: 0px;
+			margin: 0px;
+
+		}
+		table{
+			width: 600px;
+			margin:	50px auto 0px; 
+			border-collapse: collapse;
+		}
+		caption{
+			width: 600px;
+			height: 50px;
+			line-height: 50px;
+			border: #000000 solid 2px;
+			border-bottom: 0px;
+		}
+		tbody > tr,td{
+			width: 150px;
+			height: 25px;
+			border: #000000 solid 2px;
+			text-align: center;
+		}
+		p,button{
+			width: 610px;
+			height: 25px;
+			margin: 2px auto 5px;
+			background-color: #ffffff;
+		}
+		div{
+			width: 610px;
+			margin: 0px auto;
+		}
+		div > button{
+			width: 50px;
+		}
+	</style>
+ </head>
+ <body>
+	<table class ="one">
+		<caption>
+			20期花名册
+		</caption>
+		<thead >
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>分数</td>
+				<td>性别</td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<div>
+		<span>查找从：</span>
+		<input type="number" value=' ' placeholder='0' class='out'>
+		<span>到</span>
+		<input type="number" value=' ' placeholder='100' class='end'>
+		<span>结束</span>
+		<button>查询</button>
+	</div>
+	<div>
+		<p>
+			<button>获取全班同学分数</button>
+		</p>
+		<p>
+			<button>分数从高到底</button>
+		</p>
+		<p>
+			<button>分数从底到高</button>
+		</p>
+		<p>
+			<button>分数60分及以上</button>
+		</p>
+		<p>
+			<button>分数60分以下</button>
+		</p>
+		<p>
+			<button>全班同学总分</button>
+		</p>
+	</div>
+	<script>
+		var students = [
+			{name: 'sevenday', age: 3, grades: 90, property: '大帅比'},
+			{name: '思念的落叶', age: 3, grades: 89, property: '大帅比'},
+			{name: '孙嘉孝', age: 3, grades: 88, property: '大帅比'},
+			{name: '煜烐', age: 3, grades: 87, property: '大帅比'},
+			{name: 'Adam', age: 3, grades: 85, property: '大帅比'},
+			{name: 'wzker', age: 3, grades: 86, property: '大帅比'},
+			{name: '蜗牛', age: 3, grades: 81, property: '小仙女'},
+			{name: '旱麓', age: 3, grades: 60, property: '大帅比'},
+			{name: '某个大猪蹄子', age: 3, grades: 92, property: '大帅比'},
+			{name: '晚晚', age: 3, grades: 70, property: '大帅比'},
+			{name: '旱小麓', age: 3, grades: 50, property: '大帅比'},
+			{name: '赵杰坤', age: 3, grades: 89, property: '大帅比'},
+			{name: '茜小妹吖', age: 3, grades: 88, property: '小仙女'},
+			{name: '古月', age: 3, grades: 87, property: '大帅比'},
+			{name: 'Gavin', age: 3, grades: 59, property: '大帅比'},
+			{name: '小新没了蜡笔', age: 3, grades: 30, property: '大帅比'},
+			{name: 'Demi', age: 3, grades: 10, property: '大帅比'},
+			{name: '空白', age: 3, grades: 5, property: '大帅比'},
+			],
+			form = document.getElementsByTagName("tbody"),
+			thead = document.querySelectorAll('.one > thead > tr > td'),
+			theadLength = thead.length,
+			content = document.createDocumentFragment()
+		function tudents_a(students){
+			length = students.length
+			for(var a = 0; a < length; a++){
+				var tr = document.createElement('tr')
+				for(var b = 0; b < theadLength; b++){
+					if( b === 0 ){
+						var td = document.createElement('td')
+						td.append(students[a].name)
+						tr.append(td)
+					}else if( b === 1 ){
+						var td = document.createElement('td')
+						td.append(students[a].age)
+						tr.append(td)
+					}else if( b === 2 ){
+						var td = document.createElement('td')
+						td.append(students[a].grades)
+						tr.append(td)
+					}else{
+						var td = document.createElement('td')
+						td.append(students[a].property)
+						tr.append(td)
+					}
+				}
+				content.append(tr)
+			}
+			form[0].append(content)
+		}
+		var scoresRanking = document.querySelectorAll('button'),
+			aaa = [],
+			out = document.querySelector('.out'),
+			end = document.querySelector('.end')
+		function asd(){
+			var scoresRanking_a = document.querySelectorAll('tbody > tr > td:nth-of-type(1)')
+			var scoresRanking_b = document.querySelectorAll('tbody > tr > td:nth-of-type(2)')
+			var scoresRanking_c = document.querySelectorAll('tbody > tr > td:nth-of-type(3)')
+			var scoresRanking_d = document.querySelectorAll('tbody > tr > td:nth-of-type(4)')
+				aaa = []
+				for(var c = 0; c < scoresRanking_a.length;c++){
+					aaa.push({name: scoresRanking_a[c].innerText, age: scoresRanking_b[c].innerText, grades: scoresRanking_c[c].innerText, property: scoresRanking_d[c].innerText},)
+				}
+		}
+		scoresRanking[1].onclick = function(){//1	
+			form[0].innerHTML = '  '
+			tudents_a(students)
+		}
+		scoresRanking[2].onclick = function(){//2
+			asd()
+			aaa.sort(function(a,b){
+				console.log(b.grades)
+				return b.grades - a.grades
+			})
+			form[0].innerHTML = '  '
+			tudents_a(aaa)
+			asd()
+			console.log(aaa)
+		}
+		scoresRanking[3].onclick = function(){//3
+			asd()
+			aaa.sort(function(a,b){
+				return a.grades - b.grades
+			})
+			form[0].innerHTML = '  '
+			tudents_a(aaa)
+			asd()
+			console.log(aaa)
+		}
+		scoresRanking[4].onclick = function(){//4
+			asd()
+			var students_b = students.filter(function(item){
+				return item.grades >=  60
+			})
+			form[0].innerHTML = ' '
+			tudents_a(students_b)
+			asd()
+			console.log(aaa)
+		}
+		scoresRanking[5].onclick = function(){//5
+			asd()
+			var students_b = students.filter(function(item){
+				return item.grades <  60
+			})
+			form[0].innerHTML = ' '
+			tudents_a(students_b)
+			asd()
+			//console.log(aaa)
+		}
+		scoresRanking[6].onclick = function(){//6
+			var students_c = students.filter(function(item){
+					return item
+			})
+			var ccc = 0
+			for( var d = 0;d<students.length;d++){
+				ccc += students_c[d].grades
+			}
+			alert("全班总分数为"+ccc) 
+		}
+		scoresRanking[0].onclick = function(){//0
+			var value_a = out.value
+				value_b = end.value
+				console.log(value_a,value_b)
+			var	result_aa = students.filter(function(iten){
+				return iten.grades >= value_a
+			})
+			var	result_cc = result_aa.filter(function(iten){
+				return iten.grades  <= value_b
+			})
+			form[0].innerHTML = ' '
+			tudents_a(result_cc)
+		}
+	</script>
+ </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .content {
+            position: relative;
+            margin: 50px auto;
+            width: 400px;
+            height: 400px;
+            background-color: #ffffff;
+        }
+        
+        .inputBox {
+            position: absolute;
+            width: 200px;
+            height: 20px;
+            bottom: 20px;
+            right: 100px;
+        }
+        
+        .inputBox>input:nth-of-type(1) {
+            width: 160px;
+            height: 100%;
+        }
+        
+        .inputBox>input:nth-of-type(3) {
+            position: absolute;
+            top: -380px;
+            right: 270px;
+        }
+        
+        li {
+            width: 380px;
+            margin: 2px;
+            list-style: none;
+            color: beige;
+            background-color: rgba(255, 0, 221, 0.863);
+        }
+        
+        .chatContent {
+            width: 400px;
+            height: 350px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="chatting">
+            <ul class="chatContent">
+
+            </ul>
+            <div class="inputBox">
+                <input type="text" placeholder="请输入" value="">
+                <input type="button" value="发送">
+                <input type="button" value="刷新" class="">
+            </div>
+        </div>
+    </div>
+    <script>
+        var input = document.querySelectorAll('input')
+        chatContent = document.querySelector('.chatContent')
+
+
+        input[1].onclick = function() {
+            var value = input[0].value
+            console.log(value)
+            if (value !== '') {
+                chatContent.innerHTML += '<li>' + value + '</li>'
+            }
+        }
+        input[2].onclick = function() {
+            chatContent.innerHTML = ''
+        }
+    </script>
+</body>
+
+</html>

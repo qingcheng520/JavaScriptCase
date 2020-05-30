@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+
+ </head>
+ <body>
+	<div>
+		<span>将</span>
+		<input type="text" class='input_a' value=''>
+		<span>替换成</span>
+		<input type="text" class='input_b' value=''>
+		<button class = 'button_a'>确定</button>
+	</div>
+	<div>
+		<span>查找</span>
+		<input type="text" class='input_c' value=''>
+		<button class = 'button_b'>查找</button>
+	</div>
+	<P>干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。<br>干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。<br>干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。<br>干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。<br>干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。干啥呢，老弟。</P>
+ </body>
+ <script>
+	var text_a = document.querySelector('p')
+		input_c = document.querySelector('.input_c')
+		input_a = document.querySelector('.input_a')
+		input_b = document.querySelector('.input_b')
+		button_a = document.querySelector('.button_a')
+		button_b = document.querySelector('.button_b')
+		
+		button_a.onclick=function(){
+		value_a = input_a.value
+		value_b = input_b.value
+			if(value_a === '' || value_b === ''){
+				alert('请输入文字')
+				return
+			}else{
+				var text_c = text_a.innerHTML.indexOf(value_a)
+				console.log(text_c)
+				if(text_c!==-1){
+					var reg = new RegExp(value_a,'g')
+					text_a.innerHTML = text_a.innerHTML.replace(reg,value_b)
+				}else{
+					alert('您要替换的值不存在')
+					return
+				}
+			}
+		}
+		button_b.onclick=function(){
+			var value_c = input_c.value
+			var text_b = text_a.innerHTML.indexOf(value_c)
+			if(text_b!==-1){
+				var reg = new RegExp(value_c,'g')
+				text_a.innerHTML = text_a.innerHTML.replace(reg,'<span style=color:red>'+value_c+'</span>')
+			}else{
+				alert('您要找的值不存在')
+				return
+			}
+		}
+ </script>
+</html>
+
